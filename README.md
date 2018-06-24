@@ -12,11 +12,11 @@ Dont worry about your favorite service suddenly shutting down or switching plans
 
 ## Supported APIs
 
-* [FixerIO](https://fixer.io)
-* ~~[CurrencyLayer](https://currencylayer.com)~~ coming soon
-* ~~[Open Exchange Rates](https://openexchangerates.org)~~ coming soon
-* ~~[json rates](http://jsonrates.com)~~ coming soon
-* ~~[Currency Converter API](https://www.currencyconverterapi.com)~~ coming soon
+* [FixerIO](https://fixer.io) = fixerio
+* ~~[CurrencyLayer](https://currencylayer.com)~~ coming soon = currencylayer
+* ~~[Open Exchange Rates](https://openexchangerates.org)~~ coming soon = open_exchange_rates
+* ~~[json rates](http://jsonrates.com)~~ coming soon = json_rates
+* ~~[Currency Converter API](https://www.currencyconverterapi.com)~~ coming soon = currency_converter_api
 
 ## Installation
 
@@ -30,11 +30,44 @@ If you're using Laravel, a service provider and facade is included to provide co
 
 ## Usage
 
+### Initialize instance
+
 ```php
-Rackbeat\VAT::include($amountExclVat = 100.0, 25); // 125.0
-Rackbeat\VAT::exclude($amountInclVat = 100.0, 25); // 80.0
-Rackbeat\VAT::amount($amountInclVat = 100.0, 25); // 25.0
-Rackbeat\VAT::percentage($amountInclVat = 100.0, $amountExclVat = 80.0); // 0.25
+$api = Rackbeat\Currency\API::make('fixerio'); // driver from supported drivers.
+```
+
+### Set base currency (default = USD)
+
+```php
+$api->setBase(Rackbeat\Currency\Symbol::USD);
+```
+
+### Set symbols to return (default = all/[])
+
+```php
+$api->setSymbols([ Rackbeat\Currency\Symbol::DKK, Rackbeat\Currency\Symbol::EUR, Rackbeat\Currency\Symbol::USD ]);
+```
+
+*Please note, you are not required to use `Rackbeat\Currency\Symbol` to specify symbols. It's simply a convenience helper.*
+
+### Get latest rates
+
+```php
+$api->get(); // Get latest rates for selected symbols, using set base currency
+$api->get('DKK');  // Get latest rates for selected symbols, using DKK as base currency
+```
+
+### Convert amount from one currency to another
+
+```php
+$api->convert($fromCurrency = 'DKK', $toCurrency = 'EUR', 10.00); // Convert 10 DKK to EUR
+```
+
+### Get rate on specific date
+
+```php
+$api->historical($date = '2018-01-01'); // Get currency rate for base on 1st of January 2018
+$api->historical($date = '2018-01-01', 'GBP'); // Get currency rate for GBP on 1st of January 2018
 ```
 
 ## Laravel

@@ -12,11 +12,11 @@ class MockDriver extends BaseDriver implements DriverInterface
 		return [];
 	}
 
-	public function get(): array {
+	public function get($forCurrency = null): array {
 		return [];
 	}
 
-	public function historical( $date ): array {
+	public function historical( $date, $forCurrency = null ): array {
 		return [];
 	}
 

@@ -12,11 +12,11 @@ class FixerIo extends BaseDriver implements DriverInterface
 		// TODO: Implement convert() method.
 	}
 
-	public function get(): array {
+	public function get($forCurrency = null): array {
 		// TODO: Implement get() method.
 	}
 
-	public function historical( $date ): array {
+	public function historical( $date, $forCurrency = null ): array {
 		// TODO: Implement historical() method.
 	}
 

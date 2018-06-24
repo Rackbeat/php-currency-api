@@ -32,6 +32,13 @@ interface DriverInterface
 	public function symbols(): array;
 
 	/**
+	 * @param null|string $forCurrency
+	 *
+	 * @return array
+	 */
+	public function get( $forCurrency = null ): array;
+
+	/**
 	 * @param string               $fromCurrency
 	 * @param string               $toCurrency
 	 * @param double|integer|float $amount
@@ -41,17 +48,12 @@ interface DriverInterface
 	public function convert( $fromCurrency, $toCurrency, $amount ): array;
 
 	/**
-	 *
-	 * @return array
-	 */
-	public function get(): array;
-
-	/**
 	 * @param string|\DateTime $date
+	 * @param null|string      $forCurrency
 	 *
 	 * @return array
 	 */
-	public function historical( $date ): array;
+	public function historical( $date, $forCurrency = null ): array;
 
 	/**
 	 * @param string|\DateTime $fromDate
