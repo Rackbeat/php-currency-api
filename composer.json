@@ -1,0 +1,45 @@
+{
+	"name": "rackbeat/php-currency-api",
+	"description": "Wrapper for multiple currency rate APIs",
+	"keywords": [
+		"currency",
+		"laravel",
+		"currency rates",
+		"rates",
+		"exchange rates",
+		"currency conversion",
+		"api"
+	],
+	"type": "library",
+	"license": "MIT",
+	"authors": [
+		{
+			"name": "Lasse Rafn",
+			"email": "lasserafn@gmail.com"
+		},
+		{
+			"name": "Rackbeat",
+			"email": "open-source@rackbeat.com"
+		}
+	],
+	"require": {
+		"php": ">=7.1"
+	},
+	"require-dev": {
+		"phpunit/phpunit": "^7.0",
+		"satooshi/php-coveralls": "^1.0"
+	},
+	"autoload": {
+		"psr-4": {
+			"Rackbeat\\Currency\\": "src/"
+		}
+	},
+	"autoload-dev": {
+		"psr-4": {
+			"Currency\\Tests\\": "tests/"
+		}
+	},
+	"config": {
+		"sort-packages": true
+	}
+}
