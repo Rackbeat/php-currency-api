@@ -76,3 +76,4 @@ $api->historical($date = '2018-01-01', 'GBP'); // Get currency rate for GBP on 1
 
 ## Requirements
 * PHP >= 7.1
+* Possibly a paid plan for your desired API. Check their pricing.
